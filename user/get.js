@@ -24,18 +24,16 @@ module.exports = {
         }else{
             findUsers(req, res, searchQuery, limit, page);
         }
-        
-        
-            User.find(searchQuery)
-            .limit(parseInt(limit)).skip(((page-1)*limit))
-            .then((result)=>{
-                res.json(result);
-                res.end();
-            })
-            .catch((error)=>{
-                console.log(error);
-            })
-
+            // User.find(searchQuery)
+            // .limit(parseInt(limit)).skip(((page-1)*limit))
+            // .then((result)=>{
+            //     res.json(result);
+            //     res.end();
+            // })
+            // .catch((error)=>{
+            //     console.log(error);
+            // })
+            //
   },
   authenticateUser(req, res){
     var query = { 
