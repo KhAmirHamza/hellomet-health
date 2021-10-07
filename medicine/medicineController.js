@@ -9,9 +9,8 @@ medicineRouter.post("/", function (req, res) {
     Add.addMeMedicine(req, res);
 });
 
-
 medicineRouter.get("/",(req, res)=>{
-    Get.getMeMedicine(req, res);
+ //   Get.getMeMedicine(req, res);
 })
 
 //update

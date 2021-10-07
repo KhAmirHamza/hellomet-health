@@ -14,7 +14,7 @@ module.exports = {
         if (name) {
             //  {"meta_data.name" : {$regex : ".*"+name+".*/i"}}
             searchQuery = { 'meta_data.name' : { '$regex' : name, '$options' : 'i' } }
-            findPharmacies(req, res, searchQuery);
+            findPharmacies(req, res, searchQuery, limit, page);
         } else if (id) {
             searchQuery = {"_id" : id}
             findPharmacy(req, res, searchQuery);
@@ -24,7 +24,7 @@ module.exports = {
             findPharmacy(req, res, searchQuery);
         }
         else{
-            findPharmacies(req, res, searchQuery);
+            findPharmacies(req, res, searchQuery, limit, page);
         }
     },
     authenticatePharmacy(req, res){

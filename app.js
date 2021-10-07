@@ -103,7 +103,7 @@ app.post("/uploadImageToGenarateUrl",
     function (req, res) {
         console.log(req.file);
        console.log(__dirname + "/Images/" + req.file.filename);
-       var ref = { url: "https://api.hellometbd.com/Images/" + req.file.filename }
+       var ref = { url: "https://hellomet-health.herokuapp.com/Images/" + req.file.filename }
        res.json(ref);
     }
 );
