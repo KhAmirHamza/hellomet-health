@@ -10,7 +10,7 @@ medicineRouter.post("/", function (req, res) {
 });
 
 medicineRouter.get("/",(req, res)=>{
- //   Get.getMeMedicine(req, res);
+    Get.getMeMedicine(req, res);
 })
 
 //update
