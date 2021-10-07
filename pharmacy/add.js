@@ -9,6 +9,7 @@ module.exports = {
                 name: pData.name,
                 founder: pData.founder,
                 image_url: pData.image_url,
+                address: pData.address,
                 latitude: pData.latitude,
                 longitude: pData.longitude,
                 phone_number: pData.phone_number,
@@ -27,7 +28,7 @@ module.exports = {
             res.end();
         }).catch((error)=>{
             console.log("uploading Pharmacy to MongoDB has Failed: error: " + error);
-            res.json({ message: "Pharmacy add Failed" })
+            res.json({ message: "Pharmacy add Failed: "+error })
             res.end();
         })
 
