@@ -1,7 +1,7 @@
-const Order = require('../models/order')
+const Pharmacy = require('../models/pharmacy')
 
 module.exports = {
-     updateOrder(id, req, res){
+     updatePharmacy(id, req, res){
 
         let updatedData = req.body;
         console.log(id);
@@ -9,7 +9,7 @@ module.exports = {
         //var query = {"_id": ObjectID(req.params.id)};
         let query = { "_id": id };
         var newvalues = { $set: updatedData };
-        Order.updateOne(query, newvalues, function (error, result) {
+        Pharmacy.updateOne(query, newvalues, function (error, result) {
             if (error) {
                 console.log(error);
                 //res.sendStatus(404);
