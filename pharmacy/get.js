@@ -3,7 +3,7 @@ const Pharmacy = require('../models/pharmacy')
 module.exports = {
      getPharmacy(req, res){
          
-        const {limit =50 , page =1, name, id, phone_number} = req.query;
+        const {limit =10 , page =1, name, id, phone_number} = req.query;
         console.log("limit");
         console.log(limit);
         console.log("skip");
