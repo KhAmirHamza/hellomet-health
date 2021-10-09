@@ -37,9 +37,9 @@ module.exports = {
             created_at: Date.now(),
         }
 
-       // var prescriptionImageUrl = req.body.prescriptionImageUrls[0];
-        var prescriptionImageUrls = [];
-        prescriptionImageUrls.push({"prescriptionImageUrl": "jihkhkjhjk"});
+         var prescriptionImageUrls = req.body.prescriptionImageUrls;
+        // var prescriptionImageUrls = [];
+        // prescriptionImageUrls.push({prescriptionImageUrl});
         var items = req.body.items;
         var order;
         if (prescriptionImageUrls) {
@@ -47,7 +47,7 @@ module.exports = {
                 {
                     _id: generateID("O"),
                     meta_data: orderMetaData,
-                    prescriptionImageUrls: prescriptionImageUrls,
+                    prescriptionImageUrls: req.body.prescriptionImageUrls,
                 }
             )
 
@@ -58,7 +58,7 @@ module.exports = {
                 // res.json({ message: "Order add Successfuly" })
 
                 GetOrder.getPharmacyTokenThenSendNotification(req, res, order.meta_data.pharmacy_id, "New Order", "New order placed! Check it now!");
-                res.json({ "message": "Order Add Succesfully" })
+                res.json(result)
                 res.end();
 
 

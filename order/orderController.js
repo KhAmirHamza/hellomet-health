@@ -5,6 +5,7 @@ const Delete = require('../order/delete')
 const Add = require('../order/add')
 const Get = require('../order/get')
 const Range =  require('../order/range')
+const Order = require('../models/order')
 
 orderRouter.post("/", function (req, res) {
     Add.addOrder(req, res);
@@ -31,6 +32,20 @@ orderRouter.delete("/", function (req, res) {
     console.log(req.body);
     console.log(req.body.ids);
     Delete.deleteManyOrder(req, res, req.body.ids);
+})
+
+//delete
+orderRouter.delete("/all", function (req, res) {
+    Order.deleteMany({},function(error){
+            if (error) {
+                console.log(error);
+                res.end();
+            }else{
+                console.log("Multiple Order are Deleted");
+                res.json({"message": " Multiple Order are Deleted!"})
+                res.end();
+            }
+        })
 })
 
 //delete
