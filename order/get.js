@@ -57,7 +57,7 @@ module.exports = {
     ,
     getAllOrdersAsoLocal(req, res) {
         var searchQuery = {};
-        const { limit = 50, page = 1, name, id, action, status } = req.query;
+        const { limit = 50, page = 1,  action, status } = req.query;
 
         console.log(req.query);
         // Get All Local Order...
