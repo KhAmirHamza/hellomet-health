@@ -40,14 +40,22 @@ module.exports = {
          var prescriptionImageUrls = req.body.prescriptionImageUrls;
         // var prescriptionImageUrls = [];
         // prescriptionImageUrls.push({prescriptionImageUrl});
-        var items = req.body.items;
         var order;
-        if (prescriptionImageUrls) {
+        var items = [];
+        for (let index = 0; index < req.body.items.length; index++) {
+            const element = req.body.items[index];
+            const { medicine_id,name,price,quantity,brand,features,sub_total} = element;
+            var item = { medicine_id,name,price,quantity,brand,features,sub_total};
+            items.push(item);
+        }
+        
+        if (req.body.prescriptionImageUrls) {
+            console.log("Prescription Image URl");
             order = new Order(
                 {
                     _id: generateID("O"),
                     meta_data: orderMetaData,
-                    prescriptionImageUrls: req.body.prescriptionImageUrls,
+                    prescriptionImageUrls: prescriptionImageUrls,
                 }
             )
 
@@ -67,7 +75,8 @@ module.exports = {
                 res.json({ "message": "Order Add Failed" })
                 res.end();
             })
-        } else if (items) {
+        } else if (req.body.items.length>0) {
+            console.log("Items");
             order = new Order(
                 {
                     _id: generateID("O"),
@@ -83,7 +92,7 @@ module.exports = {
                 // res.json({ message: "Order add Successfuly" })
 
                 GetOrder.getPharmacyTokenThenSendNotification(req, res, order.meta_data.pharmacy_id, "New Order", "New order placed! Check it now!");
-                res.json({ "message": "Order Add Succesfully" })
+                res.json(result)
                 res.end();
 
 

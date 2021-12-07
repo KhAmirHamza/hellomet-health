@@ -47,12 +47,12 @@ const prescriptionImageUrls = {
 }
 
 const item = {
-    brand: {type: String, required: true},
-    features: {type: String, required: true},
     medicine_id: {type: String, required: true},
     name: {type: String, required: true},
     price: {type: String, required: true},
     quantity: {type: String, required: true},
+    brand: {type: String, required: true},
+    features: {type: String, required: true},
     sub_total: {type: String, required: true}
 }
 
@@ -63,7 +63,7 @@ const items = {
 const orderSchema = new Schema({
     _id:{type: String, required: true},
     meta_data: {type: meta_data, required: true},
-    items: {type: items, required: false},
+    items: {type: Array, required: false},
     prescriptionImageUrls: {type: Array, required: false}
 },
 {timestamps: true});
