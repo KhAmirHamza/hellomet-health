@@ -121,16 +121,16 @@ app.get('/get',function(req, res){
 })
 
 //For Cpanel...
-//app.listen(3000);
+app.listen(5000);
 
 
-//For Cloud Hosting...
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, function(error){
-    if(error){
-        console.log(error);
-    }else{
-        console.log('Server is running on port :' + PORT);
-    }
-});
+// //For Cloud Hosting...
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, function(error){
+//     if(error){
+//         console.log(error);
+//     }else{
+//         console.log('Server is running on port :' + PORT);
+//     }
+// });
 

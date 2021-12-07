@@ -63,7 +63,7 @@ const items = {
 const orderSchema = new Schema({
     _id:{type: String, required: true},
     meta_data: {type: meta_data, required: true},
-    items: {type: Array, required: false},
+    items: {type: [item], required: false},
     prescriptionImageUrls: {type: Array, required: false}
 },
 {timestamps: true});
