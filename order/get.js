@@ -76,6 +76,8 @@ module.exports = {
                             .catch((error) => {
                                 console.log(error);
                                 res.end()
+
+                                    
                             })
                     } else {
                         console.log("ALL Order");
@@ -98,8 +100,7 @@ module.exports = {
     },
     getPharmacyTokenThenSendNotification(req, res, pharmacy_id, title, body){
         getPharmacyTokenThenSendNotification(req, res, pharmacy_id, title, body);
-    }
-
+    } 
 }
 
 function filterLocalOrderThenSend(req, res, result) {

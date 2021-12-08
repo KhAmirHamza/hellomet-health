@@ -41,13 +41,7 @@ module.exports = {
         // var prescriptionImageUrls = [];
         // prescriptionImageUrls.push({prescriptionImageUrl});
         var order;
-        var items = [];
-        for (let index = 0; index < req.body.items.length; index++) {
-            const element = req.body.items[index];
-            const { medicine_id,name,price,quantity,brand,features,sub_total} = element;
-            var item = { medicine_id,name,price,quantity,brand,features,sub_total};
-            items.push(item);
-        }
+        
         
         if (req.body.prescriptionImageUrls) {
             console.log("Prescription Image URl");
@@ -77,6 +71,14 @@ module.exports = {
             })
         } else if (req.body.items.length>0) {
             console.log("Items");
+            var items = [];
+            
+        for (let index = 0; index < req.body.items.length; index++) {
+            const element = req.body.items[index];
+            const { medicine_id,name,price,quantity,brand,features,sub_total} = element;
+            var item = { medicine_id,name,price,quantity,brand,features,sub_total};
+            items.push(item);
+        }
             order = new Order(
                 {
                     _id: generateID("O"),
