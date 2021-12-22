@@ -52,39 +52,54 @@ app.use(cors()) // Use this after the variable declaration
 // });
 
 
-// Updating Specefic value for all documents of collection
+//Updating Specefic value for all documents of collection
+app.get("/customUpdate", (req, res)=>{
+    updateSpeceficPropertiesForAllDocumentsOfCollection();
+    res.end();
+})
+function updateSpeceficPropertiesForAllDocumentsOfCollection(){
+        var count = 0;
+        //todo.....mongodb connection now can reuse...
+        const Medicine  = require('./models/medicine')
+        Medicine.find({})
+            .then((elements)=>{
+
+                console.log("elements");
+                //console.log(elements);
+
+                elements.map(element=>{
+                    const query = { "_id": element._id } ;
+                    element.meta_data.image_url = element.meta_data.image_url.replace("https://api.hellometbd.com/","https://hellomet-health.herokuapp.com/")
+                    Medicine.updateOne(query, {$set: element}, (err, result) => {
+                        if (err) {
+                            console.log(err);
+                        }else{
+                            //console.log(result);
+                            console.log(++count);
+                        }
+                      });
+                })
+            
+            })
+            .catch((error)=>{
+                console.log(error);
+                res.end()
+            })
+
+        // var db = Client.db(dbName);
+        // var coll = db.collection(collectionName)
+        // coll.find({}).toArray(function(error, elements){
+        //     if (error) {
+        //         console.log(error);
+        //     }else{
+
+        //     }
+        // })
+}
 // mongoUtil.connetToServer(function(error, Client){
 //     if (error) {
 //         console.log(error);
 //     }else{
-//         var count = 0;
-
-//         //todo.....mongodb connection now can reuse...
-//         var db = Client.db("medicine");
-//         var coll = db.collection("meta_data")
-//         coll.find({}).toArray(function(error, medicines){
-//             if (error) {
-//                 console.log(error);
-//             }else{
-//                 console.log("medicines");
-//                 //console.log(medicines);
-
-//                 medicines.map(medicine=>{
-//                     const query = { "_id": medicine._id } ;
-//                     medicine.meta_data.image_url = medicine.meta_data.image_url.replace("https://hellometbd.com/","https://api.hellometbd.com/")
-//                     coll.updateOne(query, {$set: medicine}, (err, result) => {
-//                         if (err) {
-//                             console.log(err);
-//                         }else{
-//                             //console.log(result);
-//                             console.log(++count);
-//                         }
-//                       });
-//                 })
-//             }
-//         })
-
-
 //     }
 // })
 
