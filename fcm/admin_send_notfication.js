@@ -1,6 +1,6 @@
 //import * as admin from 'firebase-admin';
 const admin = require('firebase-admin');
-var serviceAccount = require('../fcm/hellomet-c4399-firebase-adminsdk-tgqg0-f39a5fb6f5.json')
+var serviceAccount = require('../fcm/medicine-delivery-e726b-firebase-adminsdk-x5fl6-5a57e22959.json')
 var adminInit = false;
 
 
