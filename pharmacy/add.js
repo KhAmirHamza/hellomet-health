@@ -1,5 +1,5 @@
 const Pharmacy = require('../models/pharmacy')
-
+  
 module.exports = {
      addPharmacy(req, res){
         var pData = req.body.meta_data;
